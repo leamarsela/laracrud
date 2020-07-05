@@ -75,7 +75,7 @@ class AnswersController extends Controller
      */
     public function edit(Answer $answer)
     {
-        //
+        return view('answers.edit', compact('answer'));
     }
 
     /**
@@ -87,7 +87,11 @@ class AnswersController extends Controller
      */
     public function update(Request $request, Answer $answer)
     {
-        //
+        Answer::where('id', $answer->id)->update([
+            'isi' => $request->isi
+        ]);
+        
+        return redirect('/questions')->with('status', 'Data berhasil diubah.');
     }
 
     /**
@@ -98,6 +102,8 @@ class AnswersController extends Controller
      */
     public function destroy(Answer $answer)
     {
-        //
+        Answer::destroy($answer->id);
+
+        return redirect('/questions')->with('status', 'Jawaban berhasil dihapus.');
     }
 }

@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
-    <h2>List Questions and Answers</h2>
     <div class="container">
+    <h2>List Questions and Answers</h2>
         <a href="{{ url('/questions/create') }}" class="btn btn-danger mb-2 btn-lg active" role="button" aria-pressed="true">Add New Question</a>
         <table class="table">
             <thead class="thead-dark">

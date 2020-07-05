@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Answer;
 use App\Question;
 use Illuminate\Http\Request;
 
@@ -73,7 +74,7 @@ class QuestionsController extends Controller
      */
     public function edit(Question $question)
     {
-        //
+        return view('questions.edit', compact('question'));
     }
 
     /**
@@ -85,7 +86,12 @@ class QuestionsController extends Controller
      */
     public function update(Request $request, Question $question)
     {
-        //
+        Question::where('id', $question->id)->update([
+            'judul'=> $request->judul,
+            'isi' => $request->isi,
+        ]);
+
+        return redirect('/questions')->with('status', 'Data berhasil diubah.');
     }
 
     /**
@@ -96,6 +102,9 @@ class QuestionsController extends Controller
      */
     public function destroy(Question $question)
     {
-        //
+        Answer::where('question_id', $question->id)->delete();
+        Question::destroy($question->id);
+
+        return redirect('/questions')->with('status', 'Data berhasil dihapus.');
     }
 }

@@ -24,11 +24,14 @@ Route::get('/questions', 'QuestionsController@index');
 Route::get('/questions/create', 'QuestionsController@create');
 Route::get('/questions/{question}', 'QuestionsController@show');
 Route::post('/questions', 'QuestionsController@store');
+Route::delete('/questions/{question}', 'QuestionsController@destroy');
+Route::get('/questions/{question}/edit', "QuestionsController@edit");
+Route::patch('/questions/{question}', 'QuestionsController@update');
 
 
-Route::post('/answers/{id}', 'AnswersController@store');
-Route::get('/answers/{id}', 'AnswersController@index');
+Route::post('/answers/{answer}', 'AnswersController@store');
+Route::get('/answers/{answer}', 'AnswersController@index');
 Route::get('/answers/qna/{id}', 'AnswersController@show');
-
-// Route::post('/answers', 'AnswersController@store');
-// Route::get('/answers/{question_id}', 'AnswersController@create');
+Route::delete('/answers/{answer}', 'AnswersController@destroy');
+Route::get('/answers/{answer}/edit', 'AnswersController@edit');
+Route::patch('/answers/{answer}', 'AnswersController@update');
