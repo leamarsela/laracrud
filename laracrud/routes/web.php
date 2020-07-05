@@ -31,7 +31,7 @@ Route::patch('/questions/{question}', 'QuestionsController@update');
 
 Route::post('/answers/{answer}', 'AnswersController@store');
 Route::get('/answers/{answer}', 'AnswersController@index');
-Route::get('/answers/qna/{id}', 'AnswersController@show');
+Route::get('/answers/qna/{id}', 'AnswersController@show');  //id answer dan id question tidak sama.
 Route::delete('/answers/{answer}', 'AnswersController@destroy');
 Route::get('/answers/{answer}/edit', 'AnswersController@edit');
 Route::patch('/answers/{answer}', 'AnswersController@update');
